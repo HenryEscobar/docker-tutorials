@@ -1,0 +1,32 @@
+version: '3'
+services:
+    mongodb:
+        image: mongo
+        ports:
+            - 27017:27017
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=password
+#        volumes:
+#            - mongo-data:/data/db
+
+    # docker run -dp 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin 
+        # -e ME_CONFIG_MONGODB_ADMINPASSWORD=password                  
+        # -e ME_CONFIG_MONGODB_SERVER=mongodb                 
+        # --name mongo-express --net nana-3hr-tutorial_default mongo-express
+    mongo-express:
+        image: mongo-express
+        restart: always
+        ports:
+            - 8080:8081
+        environment: 
+            - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+            - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+            - ME_CONFIG_MONGODB_SERVER=mongodb
+#volumes:
+#    mongo-data:
+#        driver: local
+
+            
+# Troubleshooting:
+    # docker run -it --network nana-3hr-tutorial_default  nicolaka/netshoot  
