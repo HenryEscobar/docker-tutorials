@@ -1,0 +1,5 @@
+node_modules/*
+docker-getting-started/app/app/node_modules/*
+docker-getting-started/app/node_modules/*
+yarn.lock
+*.swp
